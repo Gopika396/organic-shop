@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../App.jsx";
+import { img } from "../assets/images.js";
 
 const baskets = [
   { id: 101, name: "Little Harvest Basket", price: 299, unit: "basket", image: "basket.jpg", desc: "A small mix of seasonal fruits and vegetables." },
@@ -24,9 +24,9 @@ export default function SeasonalBasket() {
         <header className="page-banner" data-aos="fade-up"><span className="eyebrow">A little seasonal inspiration</span><h1>Let nature fill your basket.</h1><p>Curated produce combinations to inspire your next home-cooked meal.</p></header>
         {notice && <div className="alert alert-success" role="status">{notice} <Link to="/cart" className="alert-link">View cart</Link></div>}
         <div className="row g-4">
-          {baskets.map((b) => <div className="col-md-6 col-lg-4" key={b.id}><article className="basket-card" data-aos="fade-up"><img src={`/src/assets/image/${b.image}`} alt={b.name} /><div className="basket-card-body"><span className="eyebrow">Curated produce</span><h3>{b.name}</h3><p>{b.desc}</p><div className="product-bottom"><strong className="product-price">₹{b.price}</strong><button className="btn-organic" type="button" onClick={() => { addToCart({ ...b, category: "Bundles" }); setNotice(`${b.name} added to your cart.`); }}>Add basket</button></div></div></article></div>)}
+          {baskets.map((b) => <div className="col-md-6 col-lg-4" key={b.id}><article className="basket-card" data-aos="fade-up"><img src={img(b.image)} alt={b.name} /><div className="basket-card-body"><span className="eyebrow">Curated produce</span><h3>{b.name}</h3><p>{b.desc}</p><div className="product-bottom"><strong className="product-price">₹{b.price}</strong><button className="btn-organic" type="button" onClick={() => { addToCart({ ...b, category: "Bundles" }); setNotice(`${b.name} added to your cart.`); }}>Add basket</button></div></div></article></div>)}
         </div>
-        <section className="story-grid section-space"><img className="story-image" src="/src/assets/image/pantry.jpg" alt="Natural pantry ingredients" /><div className="story-copy"><span className="eyebrow">Make it your own</span><h2>Build a basket for your kitchen.</h2><p>Want to choose every item yourself? Explore the full shop and find ingredients that fit your meals.</p><Link to="/shop" className="btn-organic">Choose your produce</Link></div></section>
+        <section className="story-grid section-space"><img className="story-image" src={img("pantry.jpg")} alt="Natural pantry ingredients" /><div className="story-copy"><span className="eyebrow">Make it your own</span><h2>Build a basket for your kitchen.</h2><p>Want to choose every item yourself? Explore the full shop and find ingredients that fit your meals.</p><Link to="/shop" className="btn-organic">Choose your produce</Link></div></section>
       </main>
       <footer className="site-footer"><div className="footer-brand">Root & Harvest</div><p>A seasonal approach to filling your kitchen with good things.</p><div className="footer-links"><Link to="/">Home</Link><Link to="/shop">Shop</Link><Link to="/farm-stories">Farm Stories</Link><Link to="/about">About</Link></div><div className="footer-socials"><a href="https://www.instagram.com/" aria-label="Instagram"><i className="bi bi-instagram" /></a><a href="https://www.facebook.com/" aria-label="Facebook"><i className="bi bi-facebook" /></a></div><div className="footer-bottom">© 2026 Root & Harvest. All rights reserved.</div></footer>
     </>

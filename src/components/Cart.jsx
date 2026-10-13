@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../App.jsx";
+import { img } from "../assets/images.js";
 
 export default function Cart() {
   const { items, updateQuantity, removeFromCart, clearCart } = useCart();
@@ -29,7 +29,7 @@ export default function Cart() {
           <div className="row g-4">
             <div className="col-lg-8">
               {items.map((item) => <article className="cart-item" key={item.id}>
-                <img src={`/src/assets/image/${item.image}`} alt={item.name} />
+                <img src={img(item.image)} alt={item.name} />
                 <div><h3 className="h5 mb-1">{item.name}</h3><p className="mb-1">₹{item.price} / {item.unit || "item"}</p>
                   <div className="quantity-control">
                     <button type="button" onClick={() => updateQuantity(item.id, item.quantity - 1)} aria-label={`Decrease ${item.name}`}>−</button><span>{item.quantity}</span><button type="button" onClick={() => updateQuantity(item.id, item.quantity + 1)} aria-label={`Increase ${item.name}`}>+</button>

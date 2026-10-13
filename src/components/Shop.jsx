@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../App.jsx";
-
-const img = (name) => `/src/assets/image/${name}`;
+import { img } from "../assets/images.js";
 
 const products = [
   { id: 1, name: "Red Apples", price: 180, unit: "1 kg", image: "apples.jpg", category: "Fruits", desc: "Crisp, naturally sweet apples." },
